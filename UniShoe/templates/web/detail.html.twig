@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Detail : {{ article.name }}{% endblock %}
+
+{% block h1 %}
+    <div class="container text-center mt-4">
+        <h1>{{ article.name }}</h1>
+    </div>
+{% endblock %}
+
+{% block mainContainer %}
+
+    {% block description %}
+        <p class="text-center" style="width: 80%; margin: 0 10% 0 10%; padding: 30px 0 30px 0">{{ article.description | nl2br }}</p>
+    {% endblock %}
+
+    {% block detail %}
+        <div class="row w-25 p-3 mx-auto text-center">
+            <div class="col">
+                <h2>Caractéristiques du produit</h2>
+                <table class="table table-striped mt-4">
+                    <tr>
+                        <td>Chaussure</td>
+                        <td>{{ article.getSideType() }}</td>
+                    </tr>
+                    <tr>
+                        <td>Marque</td>
+                        <td>{{ article.mark }}</td>
+                    </tr>
+                    <tr>
+                        <td>Pointure</td>
+                        <td>{{ article.size }}</td>
+                    </tr>
+                    <tr>
+                        <td>État</td>
+                        <td>{{ article.getStateType() }}</td>
+                    </tr>
+                    <tr>
+                        <td>Mise en ligne </td>
+                        <td>Publié par {{ article.getLabelUser() }} le {{ article.getCreatedAt() | date('d-m-Y') }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="text-primary mb-4 text-center" style="font-weight: bold; font-size: 2.5em">Prix : {{ article.price }} €</div>
+        <div class="container mt-4" style="width: 35%">
+            <h2 class="mx-auto text-center">Formulaire de contact</h2>
+            {{ form_start(form) }}
+            <div class="row">
+                <div class="col">{{ form_row(form.firstname) }}</div>
+                <div class="col">{{ form_row(form.lastname) }}</div>
+            </div>
+            <div class="row">
+                <div class="col">{{ form_row(form.phone) }}</div>
+                <div class="col">{{ form_row(form.email) }}</div>
+            </div>
+            {{ form_rest(form) }}
+            <div class="text-center">
+                <a href="#" class="btn btn-primary" style="font-size: 22px">Envoyer ce message à {{ article.getLabelUser() }}</a>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    {% endblock %}
+{% endblock %}

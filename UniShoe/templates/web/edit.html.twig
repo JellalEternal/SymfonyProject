@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit : {{ article.name }}{% endblock %}
+
+{% block mainContainer %}
+    <div class="container mt-4">
+        <h2 class=" text-center">Que voulez-vous modifier sur ce produit ?</h2>
+        <div class="mt-4">
+            {{ form_start(form) }}      <!-- Où commence le formulaire -->
+                <div class="row">
+                    <div class="col-md-4"> {{ form_row(form.name) }}</div>
+                    <div class="col-md-4"> {{ form_row(form.mark) }}</div>
+                    <div class="col-md-4"> {{ form_row(form.side) }}</div>
+                </div>
+                <div> {{ form_row(form.description) }}</div>
+                <div class="row">
+                    <div class="col-md-4"> {{ form_row(form.size) }}</div>
+                    <div class="col-md-4"> {{ form_row(form.state) }}</div>
+                    <div class="col-md-4"> {{ form_row(form.price) }}</div>
+                </div>
+                {{ form_rest(form) }}   <!-- Affiche le formulaire -->
+                <button class="btn btn-primary">Confirmer</button>
+            {{ form_end(form) }}<!-- Où fini le formulaire -->
+        </div>
+    </div>
+{% endblock %}

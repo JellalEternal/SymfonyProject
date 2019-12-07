@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block h1 %} <h1 class="text-center my-4">Inscription</h1> {% endblock %}
+
+{% block mainContainer %}
+    <div class="container mt-4" style="width: 35%">
+        {{ form_start(registrationForm) }}
+
+        {{ form_row(registrationForm.email) }}
+        <small id="emailHelp" class="form-text text-muted pb-5">Votre email ne sera partagé à aucun autre site</small>
+
+        {{ form_row(registrationForm.username) }}
+        <small id="usernameHelp" class="form-text text-muted pb-5">Votre nom d'utilisateur</small>
+        {{ form_row(registrationForm.plainPassword.first) }}
+        <small id="passwordHelp" class="form-text text-muted pb-5">Votre mot de passe (minimum 6 caractères)</small>
+
+        {{ form_row(registrationForm.plainPassword.second) }}
+        <small id="passwordHelp" class="form-text text-muted pb-5">Mot de passe identique au précédent</small>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary " style="font-size: 22px">S'inscrire</button>
+        </div>
+        {{ form_end(registrationForm) }}
+    </div>
+{% endblock %}

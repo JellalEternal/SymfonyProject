@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Title{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        {% block stylesheets %}
+            <!-- Theme CSS - Includes Bootstrap -->
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        {% endblock %}
+    </head>
+
+    <body>
+    {% block navbar %}
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="{{ path('home') }}">UniShoe</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('purchase') }}">Acheter</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('sold') }}">Vendre</a>
+                    </li>
+                </ul>
+                <div class="navbar-nav float-right">
+                    <a class="nav-link" href="{{ path('app_register') }}">S'inscrire</a>
+                    {% if app.user %}
+                        <a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>
+                    {% else %}
+                        <a class="nav-link" href="{{ path('app_login') }}">Se connecter</a>
+                    {% endif %}
+                </div>
+        </nav>
+    {% endblock %}
+
+    {% block h1 %}{% endblock %}
+
+    {% block mainContainer %}
+
+        {% block description %}{% endblock %}
+
+        {% block detail %}{% endblock %}
+
+        {% block actuality %}{% endblock %}
+
+    {% endblock %}
+
+    {% block footer %}
+        <!-- Footer -->
+        <footer class="bg-light py-5 my-4">
+            <div class="container">
+                <div class="small text-center text-muted">Copyright &copy; 2019 - UniShoe</div>
+            </div>
+        </footer>
+    {% endblock %}
+    </body>
+</html>

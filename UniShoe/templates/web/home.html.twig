@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Acceuil{% endblock %}
+
+{% block h1 %}
+    <div class="container text-center mt-4">
+        <h1>Bienvenue sur UniShoe</h1>
+    </div>
+{% endblock %}
+
+{% block actuality %}
+    <div class="container text-center mt-4">
+        <h2>Les 3 dernières chaussures mises en ligne</h2>
+        {% if app.user %}
+            <div class="alert alert-success text-center mt-4">Bonjour {{ app.user.username }} :)</div>
+        {% endif %}
+        <div class="row flex mt-4">
+            {% for article in articles %}
+                <div class="col mb-4">
+                    <a class="card" style="text-decoration: none; border: 3px solid rgba(0,0,0,.125);" href="{{ path('article.detail', {id: article.id, slug: article.slug})}}">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <div><span>{{ article.name }}</span></div>
+                                {% if article.filename %}
+                                    <img src="/images/shoes/{{ article.filename }}" alt="card-img-top" style="height: 50%; width: 50%">
+                                {% endif %}
+                                <div class="text-primary" style="font-weight: bold; font-size: 2.5rem"> {{ article.price }} €</div>
+                                <i style="font-size: 0.8rem"> Date de mise en ligne : {{ article.getCreatedAt() | date('d-m-Y') }} </i>
+                                <div><i style="font-size: 0.8rem"> Publié par {{ article.getLabelUser() }} </i></div>
+                            </h5>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

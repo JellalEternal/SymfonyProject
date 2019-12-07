@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création du produit{% endblock %}
+
+{% block mainContainer %}
+    <div class="container mt-4">
+        <h2 class=" text-center">Compléter ce formulaire afin mettre en ligne la chaussure que vous voulez vendre</h2>
+        <div class="mt-4">
+            {{ form_start(form) }}      <!-- Où commence le formulaire -->
+                <div class="row">
+                    <div class="col-md-4"> {{ form_row(form.name) }}</div>
+                    <div class="col-md-4"> {{ form_row(form.mark) }}</div>
+                    <div class="col-md-4"> {{ form_row(form.side) }}</div>
+                </div>
+                <div> {{ form_row(form.description) }}</div>
+                <div>{{ form_row(form.ImageFile) }}</div>
+                <div class="row">
+                    <div class="col-md-4"> {{ form_row(form.size) }}</div>
+                    <div class="col-md-4"> {{ form_row(form.state) }}</div>
+                    <div class="col-md-4"> {{ form_row(form.shoe_type) }}</div>
+                </div>
+                <div class="text-center w-25 mx-auto"> {{ form_row(form.price) }}</div>
+                {{ form_rest(form) }}   <!-- Affiche le formulaire -->
+                <div class="text-center mt-4">
+                    <button class="btn btn-primary" style="font-size: 22px">Vendre ce produit</button>
+                </div>
+            {{ form_end(form) }}<!-- Où fini le formulaire -->
+        </div>
+    </div>
+{% endblock %}

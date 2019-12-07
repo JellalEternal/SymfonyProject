@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vente{% endblock %}
+
+{% block h1 %} <h1 class="text-center my-4">Formulaire de vente de chaussures</h1> {% endblock %}
+
+{% block mainContainer %}
+    <div class="container text-center mt-4">
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">{{ message }}</div>
+        {% endfor %}
+        <table class="table table-striped text-center mx-auto w-50 mb-4">
+            <thead>
+            <tr>
+                <th>Chaussure</th>
+                <th>Actions pouvant être effectués</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for article in articles %}
+            <tr>
+                <td style="vertical-align: middle !important;">{{ article.name }}</td>
+                <td>
+                    <a class="btn btn-secondary" href="{{ path('article.edit', {id: article.id}) }}">Modifier</a>
+                    <a class="btn btn-secondary" href="{{ path('article.delete', {id: article.id}) }}">Supprimer</a>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="text-center mt-6">
+            <a href="{{ path('article.create') }}" class="btn btn-primary" style="font-size: 20px">Vendre une nouvelle chaussure</a>
+        </div>
+    </div>
+{% endblock %}
